@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>超市管理系统</title>
+    <!-- 引入jquery -->
+    <script src="./libs/jquery/jquery.min.js"></script>
+    <!-- 引入重置样式 -->
+    <link rel="stylesheet" href="./styles/reset.css">
+    <!-- 引入elementui.min.css -->
+    <link rel="stylesheet" href="./libs/elementui/css/elementui.min.css">
+    <!-- 引入自定义样式 -->
+    <link rel="stylesheet" href="./styles/index.css">
+    <!-- 引入vue.min.js -->
+    <script src="./libs/vue/vue.min.js"></script>
+    <!-- 引入elementui.min.js -->
+    <script src="./libs/elementui/js/elementui.min.js"></script>
+</head>
+
+</head>
+
+<body>
+    <div id="box">
+        <el-container>
+           
+            <!-- 内容部分 -->
+            <el-container>
+                <!-- 头部 -->
+                <el-header>
+                    <h2>欢迎您 admin</h2>
+                    <p>查看所有管理员账号</p>
+                </el-header>
+                <!-- 右侧主体部分 -->
+                <el-main>
+                    <!-- 大卡片 -->
+                    <el-card class="box-card">
+                        <div slot="header" class="clearfix">
+                            <span>系统信息</span>
+                        </div>
+                        <div class="text item">
+                            <!-- 卡片整体内容 -->
+
+                            <!-- 提示内容 -->
+                       <!-- 用户列表表格 -->
+                       <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
+                            <!-- 选择框 -->
+                            <el-table-column type="selection" width="55">
+                            </el-table-column>
+
+                            <!-- 用户名 -->
+                            <el-table-column prop="username" label="用户名" >
+                            </el-table-column>
+
+                            <!-- 用户组别 -->
+                            <el-table-column prop="group" label="用户组别"  show-overflow-tooltip>
+                            </el-table-column>
+
+                            <!-- 日期 -->
+                            <el-table-column label="日期" >
+                                <template slot-scope="scope">{{ scope.row.date }}</template>
+                            </el-table-column>
+                            <!-- 操作 -->
+                            <el-table-column label="操作">
+                                <template slot-scope="scope">
+                                    <el-button size="mini" type="primary" @click="handleEdit(scope.$index, scope.row)">
+                                        <i class="el-icon-edit"></i>
+                                        编辑
+                                    </el-button>
+                                    <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">
+                                        <i class="el-icon-delete"></i>
+                                        删除
+                                    </el-button>
+                                </template>
+                            </el-table-column>
+
+                        </el-table>     
+
+
+
+
+
+                        </div>
+                    </el-card>
+
+
+                </el-main>
+                <!-- 页脚 -->
+                <el-footer>
+                    <p>&copy; Copyright 2018 华联超市管理系统</p>
+                </el-footer>
+            </el-container>
+        </el-container>
+
+    </div>
+    <script>
+        //创建实列
+         new Vue({
+            el: '#box',
+            data() {
+                return {
+                    // 表格数据
+                    tableData: [
+                        {
+                            username: '王小虎1',
+                            group: '超级管理员',
+                            date: '2016-05-01',
+                        },
+                        {
+                            username: '王小虎2',
+                            group: '超级管理员',
+                            date: '2016-05-02',
+                        },
+                        {
+                            username: '王小虎3',
+                            group: '超级管理员',
+                            date: '2016-05-03',
+                        },
+                        {
+                            username: '王小虎4',
+                            group: '超级管理员',
+                            date: '2016-05-04',
+                        }
+                    ],
+                    multipleSelection: []
+                }
+            },
+
+            methods: {
+                toggleSelection(rows) {
+                    if (rows) {
+                        rows.forEach(row => {
+                            this.$refs.multipleTable.toggleRowSelection(row);
+                        });
+                    } else {
+                        this.$refs.multipleTable.clearSelection();
+                    }
+                },
+                handleSelectionChange(val) {
+                    this.multipleSelection = val;
+                },
+                handleOpen(key, keyPath) {
+                    console.log(key, keyPath);
+                },
+                handleClose(key, keyPath) {
+                    console.log(key, keyPath);
+                }
+            }
+        })
+               
+
+
+
+        
+    </script>
+</body>
+
+</html>

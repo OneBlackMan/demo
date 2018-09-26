@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>超市管理系统</title>
+    <!-- 引入重置样式 -->
+    <link rel="stylesheet" href="./styles/reset.css">
+    <!-- 引入elementui.min.css -->
+    <link rel="stylesheet" href="./libs/elementui/css/elementui.min.css">
+    <!-- 引入自定义样式 -->
+    <link rel="stylesheet" href="./styles/index.css">
+    <!-- 引入vue.min.js -->
+    <script src="./libs/vue/vue.min.js"></script>
+    <!-- 引入elementui.min.js -->
+    <script src="./libs/elementui/js/elementui.min.js"></script>
+</head>
+
+</head>
+
+<body>
+    <div id="box">
+        <el-container>
+            <!-- 左侧边栏 -->
+            <el-aside width="200px">
+                <h1>华联超市管理系统</h1>
+                <p>您好，
+                    <span>admin</span>
+                </p>
+                <ul class="fr operate">
+                    <li class="fl"> <a href="">管理首页</a></li>
+                    <li class="fr "><a href="">退出首页</a> </li>
+                </ul>
+                <div class="clear"></div>
+                <!-- 导航菜单 -->
+                <el-menu  default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :unique-opened="true">
+
+
+                    <!-- 导航一 -->
+                    <el-submenu index="1">
+                        <template slot="title">
+                            <i class="el-icon-menu"></i>
+                            <span>分类管理</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="1-1">分类管理</el-menu-item>
+                            <el-menu-item index="1-2">分类添加</el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                    <!-- 导航二 -->
+                    <el-submenu index="2">
+                        <template slot="title">
+                            <i class="el-icon-goods"></i>
+                            <span>商品管理</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="2-1">商品管理</el-menu-item>
+                            <el-menu-item index="2-2">商品添加</el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                    <!-- 导航三 -->
+                    <el-submenu index="3">
+                        <template slot="title">
+                            <i class="el-icon-tickets"></i>
+                            <span>进货管理</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="3-1">库存管理</el-menu-item>
+                            <el-menu-item index="3-2">添加库存</el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                    <!-- 导航四 -->
+                    <el-submenu index="4">
+                        <template slot="title">
+                            <i class="el-icon-sold-out"></i>
+                            <span>出货管理</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="4-1">销售列表</el-menu-item>
+                            <el-menu-item index="4-2">商品出库</el-menu-item>
+                            <el-menu-item index="4-3">商品退货</el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+
+                    <!-- 导航五-->
+                    <el-submenu index="5">
+                        <template slot="title">
+                            <i class="el-icon-date"></i>
+                            <span>统计管理</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="5-1">销售统计</el-menu-item>
+                            <el-menu-item index="5-2">进货统计</el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                    <!-- 导航六 -->
+                    <el-submenu index="6">
+                        <template slot="title">
+                            <i class="el-icon-location"></i>
+                            <span>账号管理</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="6-1"><a href="userList.html" target="contentWrap"> 账号管理</a></el-menu-item>
+                            <el-menu-item index="6-2"><a href="userAdd.html" target="contentWrap">添加账号</a> </el-menu-item>
+                            <el-menu-item index="6-3"><a href="">密码修改</a> </el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                    <!-- 导航七 -->
+                    <el-submenu index="7">
+                        <template slot="title">
+                            <i class="el-icon-circle-plus-outline"></i>
+                            <span>会员管理</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="7-1">账号管理</el-menu-item>
+                            <el-menu-item index="7-2">添加账号</el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+
+                    <!-- 导航八 -->
+                    <el-submenu index="8">
+                        <template slot="title">
+                            <i class="el-icon-sold-out"></i>
+                            <span>系统管理</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="8-1"><a href="index.html">系统信息</a> </el-menu-item>
+                            <el-menu-item index="8-2">系统配置</el-menu-item>
+                            <el-menu-item index="8-3">权限管理</el-menu-item>
+                            <el-menu-item index="8-4">添加管理组</el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+
+                </el-menu>
+
+            </el-aside>
+            <!-- 内容部分 -->
+            <!-- 使用iframe引入右侧主体 -->
+                <iframe name="contentWrap" src="main.html" frameborder="0" width="100%" height="100%" scrolling="yes"></iframe>
+        </el-container>
+
+    </div>
+    <script>
+        new Vue({
+            el: '#box',
+            methods: {
+                handleOpen(key, keyPath) {
+                    console.log(key, keyPath);
+                },
+                handleClose(key, keyPath) {
+                    console.log(key, keyPath);
+                }
+               
+                
+            }
+
+        })
+
+    </script>
+</body>
+
+</html>

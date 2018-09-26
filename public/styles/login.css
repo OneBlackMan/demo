@@ -1,0 +1,28 @@
+html,body{
+    height: 100%;
+}
+#app{
+   height: 100%;
+   background-image: url(../images/body_bg.png);
+   position: relative
+
+}
+.el-form{
+     width: 420px;
+     height: 300px;
+     position: absolute;
+     left: 0;
+     right: 0;
+     top: 0;
+     bottom: 0;
+     margin: auto;
+     border: 2px solid #999999;
+     padding-right: 26px
+ 
+}
+.el-form .title{
+  font-size: 35px;
+  color: aliceblue;
+  margin-bottom: 20px;
+  margin-left:50px 
+}
